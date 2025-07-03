@@ -1,0 +1,149 @@
+---
+description:
+globs: *
+alwaysApply: false
+---
+# Streamlit 組件和數據模型設計
+
+## 數據模型
+
+### Post 模型
+
+貼文資料的核心數據結構：
+
+```python
+class Post(BaseModel):
+    id: int
+    title: str
+    content: str
+    status: str = "draft"  # draft, scheduled, published, failed
+    scheduled_time: Optional[str] = None
+    created_time: str
+    updated_time: str
+    facebook_post_id: Optional[str] = None
+    engagement_stats: Dict = {}
+```
+
+### 狀態常數
+
+貼文狀態的定義：
+
+- **draft**: 草稿狀態，尚未發布
+- **scheduled**: 已排程，等待發布時間
+- **published**: 已成功發布到 Facebook
+- **failed**: 發布過程中發生錯誤
+
+## 核心組件
+
+### PostManager 類
+
+負責所有貼文數據的管理操作：
+
+```python
+class PostManager:
+    def load_posts(self) -> List[Post]
+    def save_posts(self, posts: List[Post]) -> None
+    def create_post(self, post_data: dict) -> Post
+    def update_post(self, post_id: int, post_data: dict) -> Post
+    def delete_post(self, post_id: int) -> bool
+    def publish_post(self, post_id: int) -> bool
+```
+
+### 頁面函數
+
+主要的頁面渲染函數：
+
+```python
+def show_dashboard() -> None
+def show_posts_list() -> None
+def show_create_post() -> None
+def show_post_detail(post_id: int) -> None
+def show_edit_post(post_id: int) -> None
+```
+
+### 輔助函數
+
+支援功能的輔助函數：
+
+```python
+def get_status_color(status: str) -> str
+def get_status_text(status: str) -> str
+def init_sample_data() -> List[Post]
+def search_posts(posts: List[Post], query: str) -> List[Post]
+def filter_posts_by_status(posts: List[Post], status: str) -> List[Post]
+```
+
+## Streamlit 組件使用
+
+### 導航組件
+
+```python
+# 側邊欄導航
+with st.sidebar:
+    if st.button("🏠 儀表板"):
+        st.session_state.page = "dashboard"
+    if st.button("📝 貼文管理"):
+        st.session_state.page = "posts"
+    if st.button("➕ 創建貼文"):
+        st.session_state.page = "create"
+```
+
+### 數據展示組件
+
+```python
+# 指標卡片
+col1, col2, col3, col4 = st.columns(4)
+with col1:
+    st.metric("總貼文數", total_posts)
+with col2:
+    st.metric("已發布", published_count)
+# ...
+
+# 圖表展示
+st.plotly_chart(fig, use_container_width=True)
+```
+
+### 表單組件
+
+```python
+# 創建貼文表單
+with st.form("create_post_form"):
+    title = st.text_input("貼文標題", max_chars=200)
+    content = st.text_area("貼文內容", height=200, max_chars=2000)
+    status = st.selectbox("狀態", ["draft", "scheduled"])
+
+    if status == "scheduled":
+        scheduled_date = st.date_input("發布日期")
+        scheduled_time = st.time_input("發布時間")
+
+    submitted = st.form_submit_button("創建貼文")
+```
+
+## 數據操作流程
+
+### 創建貼文流程
+
+1. 用戶在表單中輸入貼文資訊
+2. 點擊提交按鈕觸發表單處理
+3. 驗證輸入數據的有效性
+4. 調用 PostManager.create_post() 創建貼文
+5. 更新數據文件並顯示成功訊息
+6. 重新載入頁面顯示更新後的數據
+
+### 編輯貼文流程
+
+1. 從貼文列表點擊編輯按鈕
+2. 載入現有貼文數據到表單
+3. 用戶修改貼文內容
+4. 提交表單觸發更新操作
+5. 調用 PostManager.update_post() 更新貼文
+6. 保存數據並返回貼文列表
+
+### 發布貼文流程
+
+1. 點擊發布按鈕觸發發布操作
+2. 驗證貼文內容完整性
+3. 調用 PostManager.publish_post() 執行發布
+4. 更新貼文狀態為 "published"
+5. 記錄發布時間和相關資訊
+6. 顯示發布結果並更新界面
