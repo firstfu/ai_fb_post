@@ -3,38 +3,57 @@ description:
 globs: *
 alwaysApply: false
 ---
-# 後端架構指南
+# Streamlit 應用架構指南
 
-## API 端點結構
+## 應用結構
 
-後端系統基於 FastAPI 框架構建，提供以下主要 API 端點類別：
+Streamlit 應用基於單文件架構構建，提供以下主要功能模組：
 
-- **/auth/**: 用戶認證相關 API，包含登入、註冊和登出功能
-- **/posts/**: 貼文管理相關 API，包含 CRUD 操作和發布功能
-- **/dashboard/**: 儀表板和統計數據相關 API
-- **/users/**: 用戶資料相關 API
+- **儀表板模組**: 數據統計和可視化功能
+- **貼文管理模組**: 貼文 CRUD 操作和狀態管理
+- **數據分析模組**: 互動數據統計和趨勢分析
+- **導航系統**: 側邊欄導航和頁面狀態管理
 
 ## 主要檔案
 
-- [app/main.py](mdc:app/main.py) - 包含所有 API 端點定義和主要業務邏輯
+- [streamlit_app.py](mdc:streamlit_app.py) - 包含所有應用邏輯、頁面定義和數據管理功能
 
-## 資料模型
+## 數據模型
 
-主要的資料模型包括：
+主要的數據模型包括：
 
-1. **User** - 用戶資訊模型
-2. **Post** - 貼文資料模型
-3. **PostCreateRequest/PostUpdateRequest** - 貼文創建/更新請求模型
-4. **LoginRequest/RegisterRequest** - 登入/註冊請求模型
+1. **Post** - 貼文資訊模型，包含 id、title、content、status 等欄位
+2. **PostManager** - 貼文管理類，負責所有 CRUD 操作
+3. **狀態常數** - 定義貼文狀態：draft、scheduled、published、failed
 
-## API 流程示例
+## 應用流程示例
 
-登入流程：
-1. 客戶端發送 POST 請求到 `/auth/login`
-2. 後端驗證用戶憑證
-3. 返回 JWT Token 或錯誤訊息
+頁面導航流程：
+1. 用戶點擊側邊欄導航按鈕
+2. 更新 `st.session_state.page` 狀態
+3. 調用 `st.rerun()` 重新載入頁面
+4. 根據頁面狀態顯示對應內容
 
-貼文創建流程：
-1. 客戶端發送 POST 請求到 `/posts`
-2. 後端創建貼文記錄
-3. 返回新創建的貼文 ID 或錯誤訊息
+貼文操作流程：
+1. 用戶在表單中輸入貼文資訊
+2. 點擊提交按鈕觸發操作
+3. PostManager 執行相應的數據操作
+4. 更新 JSON 文件保存數據
+5. 顯示操作結果並重新載入頁面
+
+## 核心組件
+
+### PostManager 類
+- `load_posts()` - 從 JSON 文件載入貼文數據
+- `save_posts()` - 將貼文數據保存到 JSON 文件
+- `create_post()` - 創建新貼文
+- `update_post()` - 更新現有貼文
+- `delete_post()` - 刪除指定貼文
+- `publish_post()` - 發布貼文（模擬功能）
+
+### 頁面函數
+- `show_dashboard()` - 顯示儀表板頁面
+- `show_posts_list()` - 顯示貼文列表頁面
+- `show_create_post()` - 顯示創建貼文頁面
+- `show_post_detail()` - 顯示貼文詳情頁面
+- `show_edit_post()` - 顯示編輯貼文頁面

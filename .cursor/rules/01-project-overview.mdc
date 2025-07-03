@@ -3,29 +3,32 @@ description:
 globs: *
 alwaysApply: false
 ---
-# AI 自動化 Facebook 發文系統
+# AI 自動化 Facebook 發文系統 - Streamlit MVP
 
 ## 專案概述
 
-AI 自動化 Facebook 發文系統是一個基於 FastAPI 和現代前端技術開發的自動化社群媒體管理平台。此系統提供完整的貼文生命週期管理，從內容創建、智能編輯、定時發布到深度數據分析，為社交媒體營運人員打造一站式解決方案。
+AI 自動化 Facebook 發文系統是一個基於 Streamlit 開發的現代化社群媒體管理平台。此系統提供完整的貼文生命週期管理，從內容創建、智能編輯、定時發布到深度數據分析，為社交媒體營運人員打造一站式 MVP 解決方案。
 
 ## 主要功能
 
-- 🎨 **內容管理**: 視覺化編輯器、多媒體內容支援、智能標籤建議
-- 📅 **排程管理**: 彈性排程設定、最佳時間建議、批量排程操作
-- 📊 **數據分析**: 即時互動統計、受眾行為分析、效果趨勢圖表
-- 🔐 **安全管理**: JWT 身份驗證、角色權限控制、API 速率限制
+- 🎨 **貼文管理**: 創建、編輯、刪除和發布貼文的完整生命週期管理
+- 📅 **排程管理**: 彈性排程設定、時間管理和狀態追蹤
+- 📊 **數據分析**: 即時互動統計、效果趨勢圖表和深度洞察
+- 🔍 **搜索篩選**: 智能搜索、狀態篩選和快速定位功能
 
 ## 技術架構
 
-- **前端**: JavaScript (ES6+), TailwindCSS, HTML5
-- **後端**: Python, FastAPI, Pydantic
-- **資料儲存**: (計劃) PostgreSQL, Redis, SQLAlchemy
-- **部署**: (計劃) Docker, Nginx
+- **應用框架**: Streamlit - 統一的 Python Web 應用框架
+- **數據處理**: Pandas - 高效數據操作和分析
+- **數據可視化**: Plotly - 交互式圖表和視覺化組件
+- **數據驗證**: Pydantic - 強類型數據模型和驗證
+- **數據存儲**: JSON - 輕量級本地文件存儲
 
 ## 主要檔案結構
 
-- [app/main.py](mdc:app/main.py) - 後端 API 主程式
-- [frontend/index.html](mdc:frontend/index.html) - 前端頁面主入口
+- [streamlit_app.py](mdc:streamlit_app.py) - 主應用程式，包含所有頁面和功能模組
+- [start_app.py](mdc:start_app.py) - 應用啟動腳本和環境檢查
+- [requirements.txt](mdc:requirements.txt) - Python 依賴項列表
 - [README.md](mdc:README.md) - 專案說明文檔
-- [docs/](mdc:docs) - 技術文件資料夾
+- [README_STREAMLIT.md](mdc:README_STREAMLIT.md) - 詳細使用說明和功能介紹
+- [data/](mdc:data) - 數據存儲目錄，包含 JSON 數據文件

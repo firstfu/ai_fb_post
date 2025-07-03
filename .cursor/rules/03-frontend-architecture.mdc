@@ -1,38 +1,5 @@
 ---
 description:
-globs: *
+globs:
 alwaysApply: false
 ---
-# 前端架構指南
-
-## 技術堆疊
-
-前端基於原生 JavaScript 和 TailwindCSS 構建：
-
-- **UI 框架**: TailwindCSS
-- **JavaScript**: 原生 ES6+
-- **圖表庫**: Chart.js
-- **HTTP 請求**: jQuery AJAX
-
-## 主要頁面
-
-前端包含以下主要頁面和功能區：
-
-1. **登入/註冊頁面**: 使用者身份驗證
-2. **儀表板頁面**: 數據概覽和系統狀態
-3. **貼文列表頁面**: 所有貼文的管理界面
-4. **貼文編輯頁面**: 創建和編輯貼文內容
-5. **設定頁面**: 系統和用戶設定
-
-## 主要檔案
-
-- [frontend/index.html](mdc:frontend/index.html) - 主要 HTML 結構和應用入口
-- [frontend/assets/](mdc:frontend/assets) - 靜態資源 (圖片、圖標等)
-
-## 前端架構特點
-
-1. **單頁應用設計**: 使用 JavaScript 動態載入內容，無需重新載入頁面
-2. **響應式設計**: 適應桌面、平板和手機設備
-3. **深色模式支持**: 自動切換明暗主題
-4. **模態框系統**: 用於表單和確認對話框
-5. **通知系統**: 顯示操作結果和系統訊息
