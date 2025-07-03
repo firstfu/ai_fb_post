@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>前端功能測試 - AI 自動化 Facebook 發文系統</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind 自定義配置 -->
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: "#eff6ff",
+                100: "#dbeafe",
+                200: "#bfdbfe",
+                300: "#93c5fd",
+                400: "#60a5fa",
+                500: "#3b82f6",
+                600: "#2563eb",
+                700: "#1d4ed8",
+                800: "#1e40af",
+                900: "#1e3a8a",
+              },
+              dark: {
+                50: "#f8fafc",
+                100: "#f1f5f9",
+                200: "#e2e8f0",
+                300: "#cbd5e1",
+                400: "#94a3b8",
+                500: "#64748b",
+                600: "#475569",
+                700: "#334155",
+                800: "#1e293b",
+                900: "#0f172a",
+              },
+            },
+            fontFamily: {
+              sans: ["Inter", "Noto Sans TC", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- 自定義動畫樣式 -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&display=swap");
+
+      .test-pass {
+        animation: slideInRight 0.3s ease-out;
+      }
+
+      .test-fail {
+        animation: shake 0.5s ease-in-out;
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-5px);
+        }
+        75% {
+          transform: translateX(5px);
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 dark:bg-dark-900 text-gray-900 dark:text-gray-100 min-h-screen">
+    <div class="container mx-auto max-w-4xl px-6 py-8">
+      <!-- 頁面標題 -->
+      <div class="text-center mb-8">
+        <h1 class="text-4xl font-bold text-primary-600 dark:text-primary-400 mb-4">🧪 前端功能測試</h1>
+        <p class="text-lg text-gray-600 dark:text-gray-300">這個頁面用於測試 AI 自動化 Facebook 發文系統的前端功能</p>
+      </div>
+
+      <!-- CSS 樣式測試 -->
+      <div class="bg-white dark:bg-dark-800 rounded-lg shadow-md p-6 mb-8 border border-gray-200 dark:border-dark-700">
+        <h2 class="text-2xl font-semibold text-primary-600 dark:text-primary-400 mb-6">CSS 樣式測試</h2>
+
+        <!-- 統計卡片測試 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div
+            class="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900 dark:to-indigo-900 p-6 rounded-lg border border-blue-200 dark:border-blue-700"
+          >
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-blue-800 dark:text-blue-200 font-medium mb-2">樣式測試</h3>
+                <span class="text-3xl font-bold text-blue-900 dark:text-blue-100">100</span>
+              </div>
+              <div class="text-4xl">📝</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 按鈕樣式測試 -->
+        <div class="mb-6">
+          <h3 class="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">按鈕樣式測試</h3>
+          <div class="flex flex-wrap gap-3">
+            <button class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded-lg transition-colors duration-200 font-medium">主要按鈕</button>
+            <button class="bg-gray-600 hover:bg-gray-700 text-white px-6 py-2 rounded-lg transition-colors duration-200 font-medium">次要按鈕</button>
+            <button
+              class="border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-dark-700 px-6 py-2 rounded-lg transition-colors duration-200 font-medium"
+            >
+              輔助按鈕
+            </button>
+          </div>
+        </div>
+
+        <!-- 貼文項目測試 -->
+        <div class="bg-gray-50 dark:bg-dark-700 p-4 rounded-lg border border-gray-200 dark:border-dark-600">
+          <div class="flex items-center justify-between">
+            <span class="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 px-3 py-1 rounded-full text-sm font-medium"> 已發布 </span>
+            <span class="font-medium text-gray-800 dark:text-gray-200">測試貼文項目</span>
+            <span class="text-sm text-gray-500 dark:text-gray-400">剛剛</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- JavaScript 模組測試 -->
+      <div class="bg-white dark:bg-dark-800 rounded-lg shadow-md p-6 mb-8 border border-gray-200 dark:border-dark-700">
+        <h2 class="text-2xl font-semibold text-primary-600 dark:text-primary-400 mb-6">JavaScript 模組測試</h2>
+        <div id="js-test-results" class="mb-6 space-y-2"></div>
+        <button class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg transition-colors duration-200 font-medium" onclick="runJSTests()">
+          執行 JS 測試
+        </button>
+      </div>
+
+      <!-- 通知測試 -->
+      <div class="bg-white dark:bg-dark-800 rounded-lg shadow-md p-6 mb-8 border border-gray-200 dark:border-dark-700">
+        <h2 class="text-2xl font-semibold text-primary-600 dark:text-primary-400 mb-6">通知系統測試</h2>
+        <div class="flex flex-wrap gap-3">
+          <button
+            class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg transition-colors duration-200 font-medium"
+            onclick="testNotification('success')"
+          >
+            成功通知
+          </button>
+          <button
+            class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg transition-colors duration-200 font-medium"
+            onclick="testNotification('error')"
+          >
+            錯誤通知
+          </button>
+          <button
+            class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors duration-200 font-medium"
+            onclick="testNotification('info')"
+          >
+            資訊通知
+          </button>
+        </div>
+      </div>
+
+      <!-- 模態框測試 -->
+      <div class="bg-white dark:bg-dark-800 rounded-lg shadow-md p-6 mb-8 border border-gray-200 dark:border-dark-700">
+        <h2 class="text-2xl font-semibold text-primary-600 dark:text-primary-400 mb-6">模態框測試</h2>
+        <button class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded-lg transition-colors duration-200 font-medium" onclick="testModal()">
+          開啟測試模態框
+        </button>
+      </div>
+
+      <!-- 表單測試 -->
+      <div class="bg-white dark:bg-dark-800 rounded-lg shadow-md p-6 mb-8 border border-gray-200 dark:border-dark-700">
+        <h2 class="text-2xl font-semibold text-primary-600 dark:text-primary-400 mb-6">表單驗證測試</h2>
+        <form id="test-form" data-auto-validate class="space-y-4">
+          <div>
+            <label for="test-email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"> 電子郵件 </label>
+            <input
+              type="email"
+              id="test-email"
+              name="email"
+              required
+              class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-dark-700 dark:text-white transition-colors duration-200"
+            />
+          </div>
+          <div>
+            <label for="test-password" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"> 密碼 </label>
+            <input
+              type="password"
+              id="test-password"
+              name="password"
+              required
+              minlength="8"
+              class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-dark-700 dark:text-white transition-colors duration-200"
+            />
+          </div>
+          <button type="submit" class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded-lg transition-colors duration-200 font-medium">
+            測試表單提交
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- 引入所有 JavaScript 模組 -->
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/router.js"></script>
+    <script src="assets/js/components/modal.js"></script>
+    <script src="assets/js/components/notification.js"></script>
+    <script src="assets/js/components/form.js"></script>
+    <script src="assets/js/components/chart.js"></script>
+
+    <script>
+      // JavaScript 測試函數
+      function runJSTests() {
+        const $resultsDiv = $("#js-test-results");
+        $resultsDiv.empty();
+
+        const tests = [
+          {
+            name: "Utils 模組",
+            test: () => typeof Utils !== "undefined" && typeof Utils.generateId === "function",
+          },
+          {
+            name: "API 模組",
+            test: () => typeof API !== "undefined" && typeof API.get === "function",
+          },
+          {
+            name: "Auth 模組",
+            test: () => typeof Auth !== "undefined" && typeof Auth.isAuthenticated === "function",
+          },
+          {
+            name: "Router 模組",
+            test: () => typeof Router !== "undefined" && typeof Router.navigate === "function",
+          },
+          {
+            name: "Modal 模組",
+            test: () => typeof Modal !== "undefined" && typeof Modal.create === "function",
+          },
+          {
+            name: "Notification 模組",
+            test: () => typeof Notification !== "undefined" && typeof Notification.show === "function",
+          },
+          {
+            name: "FormHandler 模組",
+            test: () => typeof FormHandler !== "undefined" && typeof FormFactory !== "undefined",
+          },
+          {
+            name: "ChartManager 模組",
+            test: () => typeof ChartManager !== "undefined" && typeof Charts !== "undefined",
+          },
+        ];
+
+        tests.forEach(test => {
+          const passed = test.test();
+          const $result = $("<div>")
+            .addClass(
+              `p-3 rounded-lg border transition-all duration-300 ${
+                passed
+                  ? "bg-green-50 dark:bg-green-900 text-green-800 dark:text-green-200 border-green-200 dark:border-green-700 test-pass"
+                  : "bg-red-50 dark:bg-red-900 text-red-800 dark:text-red-200 border-red-200 dark:border-red-700 test-fail"
+              }`
+            )
+            .text(`${test.name}: ${passed ? "✅ 通過" : "❌ 失敗"}`);
+
+          $resultsDiv.append($result);
+        });
+      }
+
+      function testNotification(type) {
+        if (typeof Notification !== "undefined") {
+          const messages = {
+            success: "這是一個成功通知！",
+            error: "這是一個錯誤通知！",
+            info: "這是一個資訊通知！",
+          };
+          Notification.show(messages[type], type);
+        } else {
+          alert("Notification 模組未載入");
+        }
+      }
+
+      function testModal() {
+        if (typeof Modal !== "undefined") {
+          Modal.create({
+            title: "測試模態框",
+            content:
+              "<p class='mb-4 text-gray-700 dark:text-gray-300'>這是一個測試模態框的內容。</p><p class='text-gray-700 dark:text-gray-300'>模態框功能正常工作！</p>",
+            buttons: [
+              {
+                text: "關閉",
+                class: "bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg transition-colors duration-200",
+                onclick: function (modal) {
+                  modal.close();
+                },
+              },
+            ],
+          });
+        } else {
+          alert("Modal 模組未載入");
+        }
+      }
+
+      // 頁面載入完成後的初始化
+      $(document).ready(function () {
+        console.log("🧪 測試頁面已載入");
+        console.log("📚 jQuery 版本:", $.fn.jquery);
+
+        // 添加暗色模式切換功能
+        const isDark = localStorage.getItem("darkMode") === "true";
+        if (isDark) {
+          $("html").addClass("dark");
+        }
+      });
+    </script>
+  </body>
+</html>

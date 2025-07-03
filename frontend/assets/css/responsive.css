@@ -1,0 +1,709 @@
+/*
+ * AI 自動化 Facebook 發文系統 - 響應式樣式文件
+ *
+ * 功能：
+ * - 移動設備適配
+ * - 平板設備優化
+ * - 桌面設備體驗
+ * - 彈性網格佈局
+ *
+ * 作者：AI Auto Poster 團隊
+ * 更新時間：2024-01-01
+ */
+
+/* ========== 斷點定義 ========== */
+/*
+  - xs: 0px (超小型設備，手機豎屏)
+  - sm: 576px (小型設備，手機橫屏)
+  - md: 768px (中型設備，平板)
+  - lg: 992px (大型設備，桌面)
+  - xl: 1200px (超大設備，大桌面)
+  - xxl: 1400px (超超大設備)
+*/
+
+/* ========== 超小型設備 (手機豎屏) ========== */
+@media (max-width: 575.98px) {
+  /* 基礎間距調整 */
+  :root {
+    --spacing-md: 0.75rem;
+    --spacing-lg: 1rem;
+    --spacing-xl: 1.5rem;
+    --spacing-xxl: 2rem;
+  }
+
+  /* 主應用佈局 - 手機模式 */
+  .main-app {
+    grid-template-areas:
+      "header"
+      "content";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  /* 隱藏側邊欄，使用底部導航 */
+  .sidebar {
+    display: none;
+  }
+
+  /* 添加底部導航 */
+  .bottom-nav {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--background-primary);
+    border-top: 1px solid var(--border-color);
+    padding: var(--spacing-sm) 0;
+    z-index: 100;
+  }
+
+  .bottom-nav .nav-menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .bottom-nav .nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+    min-width: 60px;
+  }
+
+  .bottom-nav .nav-icon {
+    margin-right: 0;
+    margin-bottom: var(--spacing-xs);
+    font-size: var(--font-size-base);
+  }
+
+  /* 主內容區域調整 */
+  .main-content {
+    padding: var(--spacing-md);
+    padding-bottom: 80px; /* 為底部導航留空間 */
+  }
+
+  /* 頭部調整 */
+  .header-content {
+    padding: 0 var(--spacing-md);
+  }
+
+  .app-logo {
+    font-size: var(--font-size-lg) !important;
+  }
+
+  /* 認證頁面調整 */
+  .auth-page {
+    padding: var(--spacing-md);
+  }
+
+  .auth-container {
+    max-width: 100%;
+  }
+
+  .auth-header {
+    padding: var(--spacing-lg);
+  }
+
+  .app-title {
+    font-size: var(--font-size-xl) !important;
+  }
+
+  /* 按鈕調整 */
+  .btn {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: var(--font-size-base);
+    min-height: 44px; /* 觸控友好尺寸 */
+  }
+
+  .btn-sm {
+    min-height: 36px;
+  }
+
+  .btn-lg {
+    min-height: 52px;
+  }
+
+  /* 表單控制項調整 */
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    padding: var(--spacing-md);
+    font-size: 16px; /* 防止 iOS 縮放 */
+    min-height: 44px;
+  }
+
+  /* 模態框調整 */
+  .modal-content {
+    max-width: 95vw;
+    max-height: 95vh;
+    margin: var(--spacing-md);
+  }
+
+  .modal-header,
+  .modal-body,
+  .modal-actions {
+    padding: var(--spacing-md);
+  }
+
+  /* 卡片調整 */
+  .card {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .card-header,
+  .card-body,
+  .card-footer {
+    padding: var(--spacing-md);
+  }
+
+  /* 表格響應式 */
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table {
+    min-width: 600px; /* 保持最小寬度 */
+  }
+
+  .table th,
+  .table td {
+    padding: var(--spacing-sm);
+    font-size: var(--font-size-xs);
+  }
+
+  /* 通知系統調整 */
+  .notification-container {
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    left: var(--spacing-sm);
+    max-width: none;
+  }
+
+  .notification {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  /* 分頁調整 */
+  .pagination {
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+  }
+
+  .pagination-item {
+    padding: var(--spacing-sm);
+    min-width: 36px;
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* ========== 小型設備 (手機橫屏) ========== */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  /* 主應用佈局保持手機模式 */
+  .main-app {
+    grid-template-areas:
+      "header"
+      "content";
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .bottom-nav {
+    display: block;
+  }
+
+  .main-content {
+    padding: var(--spacing-lg);
+    padding-bottom: 80px;
+  }
+
+  /* 認證頁面調整 */
+  .auth-container {
+    max-width: 480px;
+  }
+
+  /* 模態框調整 */
+  .modal-content {
+    max-width: 90vw;
+  }
+
+  /* 表格調整 */
+  .table {
+    min-width: 500px;
+  }
+}
+
+/* ========== 中型設備 (平板) ========== */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  /* 平板模式：可收納的側邊欄 */
+  .main-app {
+    grid-template-areas:
+      "header header"
+      "sidebar content";
+    grid-template-columns: 200px 1fr;
+  }
+
+  .sidebar {
+    display: block;
+    transform: translateX(0);
+    transition: transform var(--transition-normal);
+  }
+
+  .sidebar.collapsed {
+    transform: translateX(-100%);
+  }
+
+  .bottom-nav {
+    display: none;
+  }
+
+  /* 側邊欄切換按鈕 */
+  .sidebar-toggle {
+    display: block;
+  }
+
+  /* 主內容調整 */
+  .main-content {
+    padding: var(--spacing-lg);
+  }
+
+  /* 認證頁面 */
+  .auth-container {
+    max-width: 500px;
+  }
+
+  /* 模態框 */
+  .modal-content {
+    max-width: 80vw;
+  }
+
+  /* 導航連結調整 */
+  .nav-link {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .nav-icon {
+    margin-right: var(--spacing-sm);
+  }
+}
+
+/* ========== 大型設備 (桌面) ========== */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  /* 標準桌面佈局 */
+  .main-app {
+    grid-template-columns: 250px 1fr;
+  }
+
+  .sidebar-toggle {
+    display: none;
+  }
+
+  .bottom-nav {
+    display: none;
+  }
+
+  /* 認證頁面 */
+  .auth-container {
+    max-width: 450px;
+  }
+
+  /* 主內容 */
+  .main-content {
+    padding: var(--spacing-xl);
+  }
+}
+
+/* ========== 超大設備 (大桌面) ========== */
+@media (min-width: 1200px) {
+  /* 最佳桌面體驗 */
+  .main-app {
+    grid-template-columns: 280px 1fr;
+  }
+
+  .main-content {
+    padding: var(--spacing-xl) var(--spacing-xxl);
+  }
+
+  /* 容器最大寬度控制 */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .container-fluid {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+}
+
+/* ========== 超超大設備 ========== */
+@media (min-width: 1400px) {
+  .main-app {
+    grid-template-columns: 300px 1fr;
+  }
+
+  .container {
+    max-width: 1320px;
+  }
+
+  .container-fluid {
+    max-width: 1800px;
+  }
+}
+
+/* ========== 橫向/縱向適配 ========== */
+@media (orientation: landscape) and (max-height: 500px) {
+  /* 橫屏低高度設備 */
+  .auth-header {
+    padding: var(--spacing-md);
+  }
+
+  .app-title {
+    font-size: var(--font-size-lg) !important;
+  }
+
+  .modal-content {
+    max-height: 85vh;
+  }
+}
+
+/* ========== 觸控設備優化 ========== */
+@media (hover: none) and (pointer: coarse) {
+  /* 觸控設備 */
+  .btn,
+  .nav-link,
+  .pagination-item,
+  .dropdown-item {
+    min-height: 44px; /* Apple 建議的最小觸控尺寸 */
+  }
+
+  /* 增加間距 */
+  .nav-menu li {
+    margin-bottom: var(--spacing-xs);
+  }
+
+  /* 移除 hover 效果，使用 active */
+  .btn:hover,
+  .nav-link:hover {
+    background-color: initial;
+  }
+
+  .btn:active,
+  .nav-link:active {
+    background-color: var(--background-tertiary);
+  }
+}
+
+/* ========== 高密度螢幕優化 ========== */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* 高 DPI 螢幕優化 */
+  .loading-spinner {
+    border-width: 2px;
+  }
+
+  .btn {
+    border-width: 1px;
+  }
+
+  .table th,
+  .table td {
+    border-bottom-width: 1px;
+  }
+}
+
+/* ========== 側邊欄響應式工具類 ========== */
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 70px;
+  left: var(--spacing-md);
+  z-index: 200;
+  background-color: var(--background-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm);
+  box-shadow: var(--shadow-medium);
+}
+
+/* ========== 響應式工具類 ========== */
+
+/* 顯示/隱藏工具類 */
+.d-xs-none {
+  display: none !important;
+}
+.d-xs-block {
+  display: block !important;
+}
+.d-xs-flex {
+  display: flex !important;
+}
+
+@media (min-width: 576px) {
+  .d-sm-none {
+    display: none !important;
+  }
+  .d-sm-block {
+    display: block !important;
+  }
+  .d-sm-flex {
+    display: flex !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .d-md-none {
+    display: none !important;
+  }
+  .d-md-block {
+    display: block !important;
+  }
+  .d-md-flex {
+    display: flex !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .d-lg-none {
+    display: none !important;
+  }
+  .d-lg-block {
+    display: block !important;
+  }
+  .d-lg-flex {
+    display: flex !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .d-xl-none {
+    display: none !important;
+  }
+  .d-xl-block {
+    display: block !important;
+  }
+  .d-xl-flex {
+    display: flex !important;
+  }
+}
+
+/* 文字對齊響應式 */
+@media (max-width: 767.98px) {
+  .text-sm-center {
+    text-align: center !important;
+  }
+  .text-sm-left {
+    text-align: left !important;
+  }
+  .text-sm-right {
+    text-align: right !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .text-md-center {
+    text-align: center !important;
+  }
+  .text-md-left {
+    text-align: left !important;
+  }
+  .text-md-right {
+    text-align: right !important;
+  }
+}
+
+/* 間距響應式 */
+@media (max-width: 575.98px) {
+  .p-xs-1 {
+    padding: var(--spacing-xs) !important;
+  }
+  .p-xs-2 {
+    padding: var(--spacing-sm) !important;
+  }
+  .p-xs-3 {
+    padding: var(--spacing-md) !important;
+  }
+
+  .m-xs-1 {
+    margin: var(--spacing-xs) !important;
+  }
+  .m-xs-2 {
+    margin: var(--spacing-sm) !important;
+  }
+  .m-xs-3 {
+    margin: var(--spacing-md) !important;
+  }
+}
+
+/* ========== 彈性網格系統 ========== */
+.container {
+  width: 100%;
+  padding-right: var(--spacing-md);
+  padding-left: var(--spacing-md);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: calc(-1 * var(--spacing-md) / 2);
+  margin-left: calc(-1 * var(--spacing-md) / 2);
+}
+
+.col {
+  flex: 1 0 0%;
+  padding-right: calc(var(--spacing-md) / 2);
+  padding-left: calc(var(--spacing-md) / 2);
+}
+
+/* 欄位尺寸 */
+.col-1 {
+  flex: 0 0 8.333333%;
+  max-width: 8.333333%;
+}
+.col-2 {
+  flex: 0 0 16.666667%;
+  max-width: 16.666667%;
+}
+.col-3 {
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+.col-4 {
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
+}
+.col-5 {
+  flex: 0 0 41.666667%;
+  max-width: 41.666667%;
+}
+.col-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+.col-7 {
+  flex: 0 0 58.333333%;
+  max-width: 58.333333%;
+}
+.col-8 {
+  flex: 0 0 66.666667%;
+  max-width: 66.666667%;
+}
+.col-9 {
+  flex: 0 0 75%;
+  max-width: 75%;
+}
+.col-10 {
+  flex: 0 0 83.333333%;
+  max-width: 83.333333%;
+}
+.col-11 {
+  flex: 0 0 91.666667%;
+  max-width: 91.666667%;
+}
+.col-12 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+/* 響應式欄位 */
+@media (min-width: 576px) {
+  .col-sm-1 {
+    flex: 0 0 8.333333%;
+    max-width: 8.333333%;
+  }
+  .col-sm-2 {
+    flex: 0 0 16.666667%;
+    max-width: 16.666667%;
+  }
+  .col-sm-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .col-sm-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+  .col-sm-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .col-sm-8 {
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+  }
+  .col-sm-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .col-md-1 {
+    flex: 0 0 8.333333%;
+    max-width: 8.333333%;
+  }
+  .col-md-2 {
+    flex: 0 0 16.666667%;
+    max-width: 16.666667%;
+  }
+  .col-md-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .col-md-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+  .col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .col-md-8 {
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+  }
+  .col-md-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .col-lg-1 {
+    flex: 0 0 8.333333%;
+    max-width: 8.333333%;
+  }
+  .col-lg-2 {
+    flex: 0 0 16.666667%;
+    max-width: 16.666667%;
+  }
+  .col-lg-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .col-lg-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+  .col-lg-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .col-lg-8 {
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+  }
+  .col-lg-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
