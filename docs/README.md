@@ -1,281 +1,116 @@
-# AI 自動化 Facebook 發文系統 - 文檔總覽
-
-## 📋 專案概述
+# AI 自動化 Facebook 發文系統 - 文檔中心
 
-本專案是一個基於 AI 技術的 Facebook 自動發文系統，能夠智能生成貼文內容並自動化發布，大幅提升社群媒體運營效率。
-
-### 🎯 核心特色
-
-- **AI 智能內容生成**：使用 OpenAI GPT 技術自動創建高質量貼文
-- **自動化排程發布**：支援預設時間和定期發文排程
-- **多帳號管理**：同時管理多個 Facebook 帳號和頁面
-- **數據分析洞察**：提供詳細的發文效果分析和建議
-- **安全可靠**：遵循最佳安全實踐和 Facebook API 規範
+## 📚 文檔概覽
 
-## 📚 文檔結構
+本目錄包含 AI 自動化 Facebook 發文系統 (Streamlit MVP) 的完整技術文檔。所有文檔均已更新以反映基於 Streamlit 的新架構。
 
-### 1. 產品規劃文檔
+## 📂 文檔結構
 
-- **[PRD.md](./PRD.md)** - 產品需求文件
-  - 完整的產品功能需求說明
-  - 用戶故事和使用案例
-  - 產品價值主張和市場定位
+### 核心文檔
 
-### 2. 技術設計文檔
+- **[README.md](README.md)** - 本文件，文檔總覽
+- **[PRD.md](PRD.md)** - 產品需求文檔 (Product Requirements Document)
+- **[TECHNICAL_ARCHITECTURE.md](TECHNICAL_ARCHITECTURE.md)** - 技術架構設計文檔
 
-- **[TECHNICAL_ARCHITECTURE.md](./TECHNICAL_ARCHITECTURE.md)** - 技術架構文件
+### 開發文檔
 
-  - 系統整體架構設計
-  - 詳細模組設計說明
-  - 數據庫設計和關係
-  - 技術選型和部署方案
+- **[DEVELOPMENT_PLAN.md](DEVELOPMENT_PLAN.md)** - 開發計劃和路線圖
+- **[API_DESIGN.md](API_DESIGN.md)** - Streamlit 組件和數據模型設計
+- **[SECURITY_COMPLIANCE.md](SECURITY_COMPLIANCE.md)** - 安全性和合規性文檔
 
-- **[API_DESIGN.md](./API_DESIGN.md)** - API 設計文件
+## 🏗️ 架構變更說明
 
-  - 完整的 REST API 規範
-  - 請求/響應格式定義
-  - 錯誤處理機制
-  - 認證和授權方案
+### 從 FastAPI + Frontend 到 Streamlit
 
-- **[FRONTEND_ARCHITECTURE_MVP.md](./FRONTEND_ARCHITECTURE_MVP.md)** - 前端架構設計 (MVP)
-  - 純 HTML/CSS/JavaScript 架構
-  - 組件化設計模式
-  - 單頁應用實現方案
-  - 性能優化和安全考量
+**原架構**:
 
-### 3. 開發管理文檔
+- 前端：JavaScript + HTML + CSS
+- 後端：FastAPI + Python
+- 數據：JSON/Database
 
-- **[DEVELOPMENT_PLAN.md](./DEVELOPMENT_PLAN.md)** - 開發階段規劃
-  - 詳細的開發時程安排
-  - 四個階段的任務分解
-  - 風險評估和緩解策略
-  - 質量保證標準
+**新架構**:
 
-### 4. 安全合規文檔
+- 統一應用：Streamlit + Python
+- 數據處理：Pandas + Pydantic
+- 可視化：Plotly
+- 存儲：JSON 文件
 
-- **[SECURITY_COMPLIANCE.md](./SECURITY_COMPLIANCE.md)** - 安全與合規指南
-  - 全面的安全架構設計
-  - 數據保護和加密策略
-  - GDPR 和 Facebook API 合規要求
-  - 安全監控和事件響應
+### 主要優勢
 
-## 🏗️ 系統架構概覽
+1. **簡化部署**: 單一應用，無需分別部署前後端
+2. **開發效率**: Python 全棧開發，減少技術棧複雜度
+3. **快速原型**: Streamlit 支持快速功能迭代
+4. **數據友好**: 內建數據科學工具支持
 
-```
-┌─────────────────────────────────────────┐
-│     前端應用 (HTML/CSS/JavaScript)        │
-├─────────────────────────────────────────┤
-│           API 層 (FastAPI)              │
-│  ┌─────────┐ ┌─────────┐ ┌─────────┐    │
-│  │ 認證模組 │ │ 內容生成 │ │ 發文管理 │    │
-│  └─────────┘ └─────────┘ └─────────┘    │
-├─────────────────────────────────────────┤
-│              服務層                      │
-│  ┌─────────┐ ┌─────────┐ ┌─────────┐    │
-│  │  AI服務 │ │Facebook │ │任務隊列 │    │
-│  └─────────┘ └─────────┘ └─────────┘    │
-├─────────────────────────────────────────┤
-│              數據層                      │
-│  ┌─────────┐ ┌─────────┐ ┌─────────┐    │
-│  │PostgreSQL│ │  Redis  │ │檔案存儲 │    │
-│  └─────────┘ └─────────┘ └─────────┘    │
-└─────────────────────────────────────────┘
-```
+## 🎯 文檔使用指南
 
-## 🚀 技術棧
+### 開發人員
 
-### 後端技術
+1. 開始閱讀 **[TECHNICAL_ARCHITECTURE.md](TECHNICAL_ARCHITECTURE.md)** 了解系統架構
+2. 查看 **[DEVELOPMENT_PLAN.md](DEVELOPMENT_PLAN.md)** 了解開發路線圖
+3. 參考 **[API_DESIGN.md](API_DESIGN.md)** 了解組件設計
 
-- **框架**: FastAPI (Python)
-- **資料庫**: PostgreSQL + Redis
-- **任務隊列**: Celery
-- **AI 服務**: OpenAI GPT-4
-- **外部 API**: Facebook Graph API
+### 產品經理
 
-### 前端技術 (MVP)
+1. 查看 **[PRD.md](PRD.md)** 了解產品需求和功能規劃
+2. 參考 **[DEVELOPMENT_PLAN.md](DEVELOPMENT_PLAN.md)** 了解開發進度
 
-- **基礎技術**: 純 HTML + CSS + JavaScript
-- **視覺化**: Chart.js (用於數據圖表)
-- **CSS 框架**: 自訂 CSS 樣式系統
-- **響應式設計**: CSS Media Queries
+### 安全團隊
 
-### 基礎設施
+1. 重點關注 **[SECURITY_COMPLIANCE.md](SECURITY_COMPLIANCE.md)**
+2. 了解 Streamlit 應用的安全考量
 
-- **容器化**: Docker + Docker Compose
-- **部署**: Kubernetes (可選)
-- **監控**: Prometheus + Grafana
-- **日誌**: ELK Stack
+## 🔄 文檔更新狀態
 
-## 📅 開發時程
+| 文檔                      | 狀態      | 最後更新   | 說明                |
+| ------------------------- | --------- | ---------- | ------------------- |
+| README.md                 | ✅ 已更新 | 2024-01-20 | 反映 Streamlit 架構 |
+| PRD.md                    | 🔄 需更新 | 2024-01-20 | 需要更新產品需求    |
+| TECHNICAL_ARCHITECTURE.md | 🔄 需更新 | 2024-01-20 | 需要重寫技術架構    |
+| DEVELOPMENT_PLAN.md       | 🔄 需更新 | 2024-01-20 | 需要調整開發計劃    |
+| API_DESIGN.md             | 🔄 需更新 | 2024-01-20 | 改為組件設計文檔    |
+| SECURITY_COMPLIANCE.md    | 🔄 需更新 | 2024-01-20 | 需要更新安全策略    |
 
-### 第一階段 (第 1-2 週)：基礎架構
+## 📝 文檔貢獻指南
 
-- [x] FastAPI 專案設置
-- [x] 資料庫設計和建立
-- [x] 用戶認證系統
-- [x] 基礎 API 端點
+### 文檔標準
 
-### 第二階段 (第 3-5 週)：核心功能
+- 使用繁體中文撰寫
+- 遵循 Markdown 格式規範
+- 包含適當的代碼示例
+- 添加圖表和流程圖說明
 
-- [ ] Facebook API 整合
-- [ ] AI 內容生成模組
-- [ ] 貼文管理系統
-- [ ] 排程功能實作
+### 更新流程
 
-### 第三階段 (第 6-7 週)：進階功能
+1. 創建分支進行文檔更新
+2. 確保內容與 Streamlit 架構一致
+3. 添加版本號和更新日期
+4. 提交 Pull Request 進行審核
 
-- [ ] 分析和報告功能
-- [ ] 模板管理系統
-- [ ] 多帳號支援
-- [ ] 系統優化
+## 🔗 相關資源
 
-### 第四階段 (第 8 週)：測試上線
+### Streamlit 官方文檔
 
-- [ ] 全面測試
-- [ ] 安全性檢查
-- [ ] 生產環境部署
-- [ ] 文檔完善
+- [Streamlit 官網](https://streamlit.io/)
+- [Streamlit API 參考](https://docs.streamlit.io/library/api-reference)
+- [Streamlit 社群](https://discuss.streamlit.io/)
 
-## 🔧 快速開始
+### 技術棧文檔
 
-### 環境要求
+- [Pandas 文檔](https://pandas.pydata.org/docs/)
+- [Plotly 文檔](https://plotly.com/python/)
+- [Pydantic 文檔](https://pydantic-docs.helpmanual.io/)
 
-- Python 3.11+
-- PostgreSQL 15+
-- Redis 7+
-- Docker & Docker Compose
-- 現代瀏覽器 (支援 ES6+)
+## 📧 聯絡資訊
 
-### 安裝步驟
+如有文檔相關問題或建議，請聯絡：
 
-```bash
-# 1. 克隆專案
-git clone <repository-url>
-cd fastapi_demo
-
-# 2. 啟動開發環境
-docker-compose up -d
-
-# 3. 安裝 Python 依賴
-pip install -r requirements.txt
-
-# 4. 執行資料庫遷移
-alembic upgrade head
-
-# 5. 啟動開發服務器
-uvicorn app.main:app --reload
-```
-
-### 環境變數配置
-
-```bash
-# .env 文件示例
-DATABASE_URL=postgresql://user:password@localhost:5432/fb_auto_poster
-REDIS_URL=redis://localhost:6379
-OPENAI_API_KEY=your_openai_api_key
-FACEBOOK_APP_ID=your_facebook_app_id
-FACEBOOK_APP_SECRET=your_facebook_app_secret
-JWT_SECRET_KEY=your_jwt_secret_key
-```
-
-## 🔐 安全考量
-
-### 數據安全
-
-- 所有敏感數據使用 AES-256 加密
-- 資料庫連接使用 SSL 加密
-- API 通信強制使用 HTTPS
-
-### 認證授權
-
-- JWT 令牌認證機制
-- 基於角色的權限控制 (RBAC)
-- Facebook OAuth 2.0 安全整合
-
-### API 安全
-
-- 請求速率限制
-- 輸入數據驗證和清理
-- 完善的錯誤處理機制
-
-## 📊 監控和分析
-
-### 系統監控
-
-- API 響應時間監控
-- 資料庫性能監控
-- 任務隊列狀態監控
-
-### 業務分析
-
-- 發文成功率統計
-- 用戶活躍度分析
-- 內容效果分析
-
-## 🧪 測試策略
-
-### 測試類型
-
-- **單元測試**: 核心業務邏輯測試
-- **整合測試**: API 端點和服務整合測試
-- **端到端測試**: 完整用戶流程測試
-- **性能測試**: 負載和壓力測試
-
-### 測試覆蓋率目標
-
-- 代碼覆蓋率 ≥ 80%
-- 關鍵路徑覆蓋率 = 100%
-
-## 📈 性能指標
-
-### 系統性能
-
-- API 響應時間 < 2 秒
-- 系統可用性 ≥ 99.5%
-- 並發用戶支援 ≥ 100
-
-### 業務指標
-
-- 貼文成功率 ≥ 95%
-- AI 內容生成時間 < 5 秒
-- 用戶滿意度 ≥ 4.5/5
-
-## 🤝 貢獻指南
-
-### 開發流程
-
-1. Fork 專案到個人帳號
-2. 創建功能分支 (`git checkout -b feature/新功能`)
-3. 提交更改 (`git commit -am '新增某某功能'`)
-4. 推送到分支 (`git push origin feature/新功能`)
-5. 創建 Pull Request
-
-### 代碼規範
-
-- 遵循 PEP 8 Python 編碼規範
-- 使用 Black 進行代碼格式化
-- 所有公開函數必須有文檔字符串
-- 提交前運行測試確保通過
-
-## 📞 聯絡資訊
-
-### 技術支援
-
-- **問題回報**: [GitHub Issues](https://github.com/your-repo/issues)
-- **技術討論**: [GitHub Discussions](https://github.com/your-repo/discussions)
-
-### 團隊聯絡
-
-- **專案經理**: pm@company.com
-- **技術主管**: tech-lead@company.com
-- **開發團隊**: dev-team@company.com
-
-## 📄 授權資訊
-
-本專案採用 MIT 授權條款，詳細內容請參閱 [LICENSE](../LICENSE) 文件。
+- **技術文檔**: 開發團隊
+- **產品文檔**: 產品團隊
+- **一般問題**: 專案維護者
 
 ---
 
-**最後更新**: 2024 年 1 月 1 日
-**文檔版本**: v1.0.0
-**專案狀態**: 開發中 🚧
+**版本**: 2.0.0 (Streamlit)
+**最後更新**: 2024-01-20
+**維護者**: AI Assistant

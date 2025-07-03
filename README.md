@@ -1,862 +1,321 @@
-# 🤖 AI 自動化 Facebook 發文系統
+# AI 自動化 Facebook 發文系統 - Streamlit MVP
 
-<div align="center">
+## 📋 專案概述
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000)
-![Python](https://img.shields.io/badge/python-3.8+-green.svg)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.104.1-009688.svg)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)
+**AI 自動化 Facebook 發文系統** 是一個基於 Streamlit 開發的現代化社群媒體管理平台。此系統提供完整的 Facebook 貼文生命週期管理，從內容創建、智能編輯、定時發布到深度數據分析，為社交媒體營運人員打造一站式解決方案。
 
-**一個現代化、全功能的 Facebook 貼文自動化管理平台**
+![Python](https://img.shields.io/badge/python-v3.8+-blue.svg)
+![Streamlit](https://img.shields.io/badge/streamlit-v1.29+-red.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
 
-[🚀 快速開始](#-快速開始) • [📚 功能特色](#-功能特色) • [🏗️ 技術架構](#️-技術架構) • [📖 API 文檔](#-api-文檔) • [🎯 使用指南](#-使用指南)
+## ✨ 主要功能
 
-![demo-screenshot](https://via.placeholder.com/800x400/4F46E5/FFFFFF?text=AI+Facebook+Post+System+Demo)
+### 📊 智能儀表板
 
-</div>
+- 📈 **實時統計概覽**: 貼文數量、發布狀態、互動數據一目了然
+- 🥧 **視覺化圖表**: 狀態分布圓餅圖、互動數據比較圖
+- 📅 **趨勢分析**: 發文效果追蹤，優化內容策略
+- 🔄 **即時更新**: 數據自動同步，無需手動刷新
 
----
+### 📝 貼文管理系統
 
-## 📖 專案概述
+- ✏️ **創建貼文**: 直觀的編輯界面，支持富文本內容
+- 📋 **批量管理**: 批量操作，提升工作效率
+- 🔍 **智能搜索**: 關鍵字搜索，快速定位目標貼文
+- 🏷️ **狀態篩選**: 按發布狀態分類管理
+- 👁️ **詳情預覽**: 完整的貼文詳情展示
 
-這是一個基於 **FastAPI** 和 **現代前端技術** 開發的 Facebook 自動化發文管理系統。系統採用微服務架構設計，提供完整的貼文生命週期管理，從內容創建、智能編輯、定時發布到深度數據分析，為社交媒體營運人員打造一站式解決方案。
+### 📅 排程發布功能
 
-### 🎯 為什麼選擇我們？
+- ⏰ **靈活排程**: 自由設定發布時間
+- 📆 **批量排程**: 一次設定多篇貼文的發布時間
+- 🔔 **狀態提醒**: 即時顯示排程狀態
+- 🚀 **一鍵發布**: 模擬 Facebook 發布流程
 
-- 🚀 **高效便捷**: 批量管理、一鍵發布，提升 300% 工作效率
-- 🤖 **AI 驅動**: 智能內容生成，降低創作門檻
-- 📊 **數據洞察**: 深度分析報告，優化內容策略
-- 🔧 **高度客製**: 靈活的模板系統，適應各種需求
-- 🛡️ **安全可靠**: 企業級安全標準，資料加密存儲
+### 📊 數據分析與洞察
 
----
-
-## ✨ 功能特色
-
-<table>
-<tr>
-<td width="50%">
-
-### 🎨 內容管理
-
-- ✅ 直觀的視覺化編輯器
-- ✅ 多媒體內容支援
-- ✅ 智能標籤建議
-- ✅ 版本歷史追蹤
-- ✅ 協作編輯功能
-
-</td>
-<td width="50%">
-
-### 📅 排程管理
-
-- ✅ 彈性排程設定
-- ✅ 最佳時間建議
-- ✅ 批量排程操作
-- ✅ 時區自動轉換
-- ✅ 發布狀態監控
-
-</td>
-</tr>
-<tr>
-<td width="50%">
-
-### 📊 數據分析
-
-- ✅ 即時互動統計
-- ✅ 受眾行為分析
-- ✅ 效果趨勢圖表
-- ✅ 競品對比分析
-- ✅ 自動化報告
-
-</td>
-<td width="50%">
-
-### 🔐 安全管理
-
-- ✅ JWT 身份驗證
-- ✅ 角色權限控制
-- ✅ API 速率限制
-- ✅ 審計日誌記錄
-- ✅ 數據備份恢復
-
-</td>
-</tr>
-</table>
-
-### 🆕 最新功能亮點
-
-| 功能           | 狀態      | 描述                                   |
-| -------------- | --------- | -------------------------------------- |
-| 📝 貼文管理    | ✅ 已完成 | 完整的 CRUD 操作，支援草稿、發布、排程 |
-| 🔍 智能搜尋    | ✅ 已完成 | 全文搜尋、標籤篩選、狀態分類           |
-| 📊 數據儀表板  | ✅ 已完成 | 即時統計、互動分析、趨勢圖表           |
-| 📱 響應式設計  | ✅ 已完成 | 完美支援桌面、平板、手機設備           |
-| 🌙 深色模式    | ✅ 已完成 | 護眼深色主題，自動切換                 |
-| 🤖 AI 內容生成 | 🚧 開發中 | GPT 驅動的智能創作助手                 |
-| 📈 高級分析    | 🚧 開發中 | 深度數據洞察與預測分析                 |
-| 👥 團隊協作    | 📋 規劃中 | 多用戶權限管理與協作工作流             |
-
----
-
-## 🏗️ 技術架構
-
-<div align="center">
-
-```mermaid
-graph TB
-    A[🌐 前端界面<br/>Vanilla JS + Tailwind] --> B[🔌 API Gateway<br/>FastAPI Router]
-    B --> C[🔐 認證中介<br/>JWT Middleware]
-    C --> D[📊 業務邏輯<br/>Service Layer]
-    D --> E[💾 數據層<br/>In-Memory Store]
-    D --> F[🤖 AI 服務<br/>OpenAI API]
-    D --> G[📘 Facebook API<br/>Graph API]
-
-    style A fill:#e1f5fe
-    style B fill:#f3e5f5
-    style C fill:#fff3e0
-    style D fill:#e8f5e8
-    style E fill:#fce4ec
-    style F fill:#f1f8e9
-    style G fill:#e3f2fd
-```
-
-</div>
-
-### 🔧 技術棧詳情
-
-<table>
-<tr>
-<td><strong>🖥️ 前端</strong></td>
-<td>
-  <img src="https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat&logo=javascript&logoColor=black">
-  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white">
-  <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white">
-</td>
-</tr>
-<tr>
-<td><strong>⚡ 後端</strong></td>
-<td>
-  <img src="https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white">
-  <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white">
-  <img src="https://img.shields.io/badge/Pydantic-E92063?style=flat&logo=pydantic&logoColor=white">
-</td>
-</tr>
-<tr>
-<td><strong>🗄️ 數據</strong></td>
-<td>
-  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=flat&logo=postgresql&logoColor=white">
-  <img src="https://img.shields.io/badge/Redis-DC382D?style=flat&logo=redis&logoColor=white">
-  <img src="https://img.shields.io/badge/SQLAlchemy-323330?style=flat&logo=sqlalchemy&logoColor=white">
-</td>
-</tr>
-<tr>
-<td><strong>🚀 部署</strong></td>
-<td>
-  <img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white">
-  <img src="https://img.shields.io/badge/Nginx-009639?style=flat&logo=nginx&logoColor=white">
-  <img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat&logo=github-actions&logoColor=white">
-</td>
-</tr>
-</table>
-
----
+- 💝 **互動統計**: 按讚、留言、分享、瀏覽數據統計
+- 📈 **效果分析**: 多維度數據比較和趨勢分析
+- 🎯 **性能監控**: 貼文表現實時監控
+- 📋 **報告生成**: 詳細的數據分析報告
 
 ## 🚀 快速開始
 
-### 📋 環境要求
+### 系統需求
 
-- 🐍 **Python**: 3.8 或更高版本
-- 📦 **Node.js**: 16+ (可選，用於前端工具)
-- 🗄️ **資料庫**: PostgreSQL 12+ 或 SQLite
-- 🔧 **其他**: Git, Docker (可選)
+- Python 3.8 或更高版本
+- 現代瀏覽器 (Chrome, Firefox, Safari, Edge)
 
-### ⚡ 一鍵安裝
+### 安裝步驟
 
-```bash
-# 克隆專案
-git clone https://github.com/your-username/ai-facebook-post-system.git
-cd ai-facebook-post-system
+1. **克隆專案**
 
-# 自動安裝腳本
-chmod +x setup.sh
-./setup.sh
-```
+   ```bash
+   git clone <repository-url>
+   cd ai_fb_post
+   ```
 
-### 🔧 手動安裝
+2. **安裝依賴**
 
-<details>
-<summary>點擊展開詳細安裝步驟</summary>
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-```bash
-# 1. 創建虛擬環境
-python -m venv .venv
+3. **啟動應用**
 
-# 2. 啟動虛擬環境
-# Linux/Mac
-source .venv/bin/activate
-# Windows
-.venv\Scripts\activate
+   **方式一：使用啟動腳本 (推薦)**
 
-# 3. 安裝依賴
-pip install -r requirements.txt
+   ```bash
+   python start_app.py
+   ```
 
-# 4. 配置環境變數
-cp .env.example .env
-# 編輯 .env 文件設定必要參數
+   **方式二：直接啟動 Streamlit**
 
-# 5. 初始化資料庫
-python -m app.database.init
+   ```bash
+   streamlit run streamlit_app.py
+   ```
 
-# 6. 啟動開發伺服器
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
-```
+   **方式三：自定義端口**
 
-</details>
+   ```bash
+   streamlit run streamlit_app.py --server.port 8502
+   ```
 
-### 🎉 驗證安裝
+4. **訪問應用**
+   - 默認地址：http://localhost:8501
+   - 應用會自動在瀏覽器中打開
 
-訪問以下鏈接確認安裝成功：
-
-- 🏠 **主頁**: http://localhost:8000
-- 📚 **API 文檔**: http://localhost:8000/docs
-- 📖 **ReDoc**: http://localhost:8000/redoc
-- ❤️ **健康檢查**: http://localhost:8000/health
-
-### 🔑 預設帳號
-
-```yaml
-管理員帳號:
-  Email: admin@example.com
-  Password: admin123
-
-測試帳號:
-  Email: user@example.com
-  Password: user123
-```
-
----
-
-## 📚 API 文檔
-
-### 🏷️ API 概覽
-
-我們的 RESTful API 遵循 OpenAPI 3.0 標準，提供完整的 CRUD 操作和高級功能。
-
-| 端點類別 | 數量 | 描述                   |
-| -------- | ---- | ---------------------- |
-| 🔐 認證  | 4    | 登入、註冊、刷新、登出 |
-| 📝 貼文  | 8    | 完整的貼文生命週期管理 |
-| 📊 分析  | 6    | 數據統計和報告生成     |
-| ⚙️ 設定  | 5    | 系統配置和用戶偏好     |
-
-### 🔐 認證 API
-
-<details>
-<summary>Authentication Endpoints</summary>
-
-```http
-POST /auth/login
-POST /auth/register
-POST /auth/refresh
-POST /auth/logout
-GET  /auth/me
-```
-
-</details>
-
-### 📝 貼文管理 API
-
-<details>
-<summary>Posts Management Endpoints</summary>
-
-#### 獲取貼文列表
-
-```http
-GET /posts?page=1&limit=10&status=published&search=關鍵字&sort=created_at:desc
-```
-
-**回應範例**:
-
-```json
-{
-  "data": [
-    {
-      "id": "uuid-string",
-      "title": "貼文標題",
-      "content": "貼文內容",
-      "status": "published",
-      "created_at": "2024-01-20T10:00:00Z",
-      "scheduled_time": null,
-      "engagement": {
-        "likes": 42,
-        "comments": 8,
-        "shares": 3
-      }
-    }
-  ],
-  "meta": {
-    "total": 156,
-    "page": 1,
-    "limit": 10,
-    "total_pages": 16
-  }
-}
-```
-
-#### 創建新貼文
-
-```http
-POST /posts
-Content-Type: application/json
-
-{
-  "title": "貼文標題",
-  "content": "貼文內容",
-  "status": "draft",
-  "tags": ["科技", "AI"],
-  "scheduled_time": "2024-01-20T10:00:00Z",
-  "media_urls": ["https://example.com/image.jpg"]
-}
-```
-
-</details>
-
-### 📊 統計分析 API
-
-<details>
-<summary>Analytics Endpoints</summary>
-
-```http
-GET /analytics/overview
-GET /analytics/engagement-trends
-GET /analytics/audience-insights
-GET /analytics/performance-metrics
-POST /analytics/custom-report
-GET /analytics/export/{format}
-```
-
-</details>
-
----
-
-## 🎯 使用指南
-
-### 🎬 快速上手影片
-
-<div align="center">
-
-[![使用教學影片](https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
-
-_點擊觀看 5 分鐘快速上手教學_
-
-</div>
-
-### 📖 詳細操作指南
-
-<details>
-<summary>🔐 1. 用戶認證與設定</summary>
-
-#### 註冊新帳號
-
-1. 訪問註冊頁面
-2. 填寫郵箱、密碼和基本資訊
-3. 驗證郵箱（檢查垃圾信件夾）
-4. 完成帳號設定
-
-#### 登入系統
-
-1. 使用郵箱和密碼登入
-2. 可選擇「記住我」保持登入狀態
-3. 首次登入會顯示引導教學
-
-</details>
-
-<details>
-<summary>📝 2. 貼文管理操作</summary>
-
-#### 創建新貼文
-
-1. 點擊「+ 新增貼文」按鈕
-2. 填寫標題（最多 100 字）
-3. 編寫內容（支援 Markdown 格式）
-4. 添加標籤和媒體檔案
-5. 選擇發布設定：
-   - **草稿**: 儲存但不發布
-   - **立即發布**: 立即發布到 Facebook
-   - **排程發布**: 設定未來發布時間
-
-#### 編輯現有貼文
-
-1. 在貼文列表中找到目標貼文
-2. 點擊「編輯」按鈕
-3. 修改內容（已發布貼文有限制）
-4. 儲存變更
-
-#### 管理貼文狀態
-
-- **📝 草稿**: 可自由編輯，尚未發布
-- **⏰ 已排程**: 等待系統自動發布
-- **✅ 已發布**: 成功發布到 Facebook
-- **❌ 發布失敗**: 需要檢查錯誤並重試
-
-</details>
-
-<details>
-<summary>📊 3. 數據分析使用</summary>
-
-#### 查看統計概覽
-
-1. 在儀表板查看關鍵指標
-2. 觀察趨勢變化和異常數據
-3. 使用篩選器按時間範圍分析
-
-#### 生成自訂報告
-
-1. 進入「分析」頁面
-2. 選擇報告類型和指標
-3. 設定時間範圍和篩選條件
-4. 導出 PDF 或 Excel 格式
-
-</details>
-
-### 💡 最佳實務建議
-
-> 💡 **專業提示**:
->
-> - 在高峰時段（19:00-21:00）發布可獲得更好的互動率
-> - 使用相關標籤可增加 40% 的觸及率
-> - 定期分析數據並調整內容策略
-
----
-
-## 🛠️ 開發指南
-
-### 📁 專案結構
+## 📁 專案結構
 
 ```
 ai_fb_post/
-├── 📂 app/                    # 後端應用程式
-│   ├── 📂 api/                # API 路由模組
-│   │   ├── v1/                # API v1 版本
-│   │   └── dependencies.py    # 依賴注入
-│   ├── 📂 core/               # 核心配置
-│   │   ├── config.py          # 應用配置
-│   │   ├── security.py        # 安全相關
-│   │   └── database.py        # 資料庫連接
-│   ├── 📂 models/             # 數據模型
-│   ├── 📂 schemas/            # Pydantic 模式
-│   ├── 📂 services/           # 業務邏輯服務
-│   ├── 📂 utils/              # 工具函數
-│   └── main.py                # FastAPI 主程式
-├── 📂 frontend/               # 前端資源
-│   ├── index.html             # 主頁面
-│   ├── 📂 assets/
-│   │   ├── 📂 js/             # JavaScript 模組
-│   │   │   ├── app.js         # 應用主邏輯
-│   │   │   ├── router.js      # 路由管理
-│   │   │   ├── api.js         # API 客戶端
-│   │   │   └── 📂 components/ # UI 組件
-│   │   ├── 📂 css/            # 樣式文件
-│   │   └── 📂 images/         # 圖片資源
-├── 📂 tests/                  # 測試代碼
-├── 📂 docs/                   # 文檔
-├── 📂 scripts/                # 部署腳本
-├── 📄 requirements.txt        # Python 依賴
-├── 📄 pyproject.toml         # 專案配置
-├── 📄 .env.example           # 環境變數範例
-├── 📄 docker-compose.yml     # Docker 配置
-└── 📄 README.md              # 專案說明
+├── streamlit_app.py          # 主應用程式
+├── start_app.py              # 啟動腳本
+├── requirements.txt          # Python 依賴
+├── README.md                 # 專案說明 (本文件)
+├── README_STREAMLIT.md       # 詳細使用說明
+├── data/                     # 數據存儲目錄
+│   └── posts.json           # 貼文數據文件
+├── docs/                     # 文檔目錄
+└── .gitignore               # Git 忽略文件
 ```
 
-### 🔧 核心組件
+## 🎯 使用指南
 
-#### PostsManager 組件
+### 基本操作流程
 
-```javascript
-// frontend/assets/js/components/posts.js
-class PostsManager {
-  constructor() {
-    this.posts = [];
-    this.currentPage = 1;
-    this.totalPages = 1;
-  }
+1. **首次使用**
 
-  async loadPosts(filters = {}) {
-    // 載入貼文邏輯
-  }
+   - 啟動應用後會自動創建示例數據
+   - 可以立即開始體驗各項功能
 
-  renderPostsList() {
-    // 渲染貼文列表
-  }
-}
-```
+2. **創建貼文**
 
-#### API 客戶端
+   - 點擊側邊欄「➕ 創建貼文」
+   - 填寫標題和內容
+   - 選擇發布狀態（草稿或排程）
+   - 點擊「創建貼文」按鈕
 
-```javascript
-// frontend/assets/js/api.js
-class APIClient {
-  constructor(baseURL) {
-    this.baseURL = baseURL;
-    this.token = localStorage.getItem("token");
-  }
+3. **管理貼文**
 
-  async request(endpoint, options = {}) {
-    // HTTP 請求封裝
-  }
-}
-```
+   - 在「📝 貼文管理」頁面查看所有貼文
+   - 使用篩選器按狀態分類
+   - 使用搜索框快速查找
+   - 點擊操作按鈕進行編輯、查看或發布
 
-### 🧪 測試
+4. **查看統計**
+   - 在「📊 儀表板」查看整體數據
+   - 分析貼文表現和互動趨勢
+   - 制定內容優化策略
+
+### 進階功能
+
+#### 貼文狀態說明
+
+- 📝 **草稿**: 尚未發布的貼文，可以繼續編輯
+- ⏰ **已排程**: 設定了發布時間的貼文，等待自動發布
+- ✅ **已發布**: 已成功發布到 Facebook 的貼文
+- ❌ **發布失敗**: 發布過程中出現錯誤的貼文
+
+#### 數據分析功能
+
+- **互動統計**: 追蹤每篇貼文的按讚、留言、分享和瀏覽數
+- **趨勢分析**: 比較不同貼文的表現，找出最佳內容類型
+- **效果評估**: 根據數據調整內容策略
+
+## 🛠️ 技術架構
+
+### 核心技術棧
+
+- **前端框架**: Streamlit - 快速構建數據應用
+- **數據處理**: Pandas - 高效數據操作和分析
+- **數據可視化**: Plotly - 交互式圖表和視覺化
+- **數據驗證**: Pydantic - 數據模型和驗證
+- **數據存儲**: JSON - 輕量級數據持久化
+
+### 架構特點
+
+- 🔧 **單文件架構**: 所有功能集中在一個主文件中
+- 💾 **檔案存儲**: 使用 JSON 格式存儲數據，易於備份和遷移
+- 🔄 **即時更新**: 操作後立即反映變化
+- 📱 **響應式設計**: 適配桌面和移動設備
+- 🎨 **現代 UI**: 清晰直觀的用戶界面
+
+## 📊 功能特色
+
+### 用戶體驗
+
+- 🎯 **直觀操作**: 簡潔明瞭的操作流程
+- ⚡ **快速響應**: 即時數據更新和操作反饋
+- 🌈 **視覺豐富**: 豐富的圖標和色彩設計
+- 📱 **跨平台**: 支援各種設備和瀏覽器
+
+### 數據管理
+
+- 💾 **自動保存**: 操作自動保存，防止數據丟失
+- 🔒 **數據安全**: 本地存儲，保護隱私安全
+- 📈 **數據分析**: 深度數據洞察和趋势分析
+- 🔄 **數據同步**: 實時數據更新機制
+
+### 開發友好
+
+- 🐍 **純 Python**: 基於 Python 生態系統
+- 🔧 **易於擴展**: 模組化設計，便於功能擴展
+- 📝 **完整文檔**: 詳細的代碼註釋和使用說明
+- 🧪 **快速開發**: Streamlit 框架支持快速原型開發
+
+## 🔧 自定義配置
+
+### 數據存儲位置
+
+默認數據存儲在 `data/posts.json`，您可以：
+
+- 備份此文件以保存所有貼文數據
+- 清空此文件以重置應用數據
+- 修改 `streamlit_app.py` 中的路徑配置
+
+### 應用設定
+
+在 `streamlit_app.py` 中可以調整：
+
+- 頁面標題和圖標
+- 主題色彩配置
+- 默認數據設定
+- 功能模組開關
+
+## 🚧 開發計劃
+
+### 近期功能 (v1.1)
+
+- [ ] **AI 內容生成**: 整合 AI 生成貼文內容
+- [ ] **模板系統**: 貼文模板管理功能
+- [ ] **標籤系統**: 貼文分類和標籤功能
+- [ ] **導出功能**: 數據導出和備份功能
+
+### 中期功能 (v1.5)
+
+- [ ] **真實 API 整合**: 實際 Facebook API 連接
+- [ ] **用戶系統**: 多用戶支持和權限管理
+- [ ] **自動化排程**: 智能發布時間建議
+- [ ] **高級分析**: 更深入的數據分析功能
+
+### 長期規劃 (v2.0)
+
+- [ ] **多平台支持**: 支持 Instagram、Twitter 等平台
+- [ ] **企業版功能**: 團隊協作和企業級功能
+- [ ] **移動應用**: 專用移動應用開發
+- [ ] **AI 智能助手**: 全面的 AI 輔助功能
+
+## 🐛 故障排除
+
+### 常見問題
+
+**1. 應用無法啟動**
 
 ```bash
-# 執行所有測試
-pytest
+# 檢查 Python 版本
+python --version  # 需要 3.8+
 
-# 執行特定測試文件
-pytest tests/test_posts.py
-
-# 生成測試覆蓋率報告
-pytest --cov=app tests/
-
-# 前端測試 (使用 Jest)
-npm test
+# 重新安裝依賴
+pip install -r requirements.txt --force-reinstall
 ```
 
-### 📦 部署
-
-<details>
-<summary>🐳 Docker 部署</summary>
+**2. 端口被占用**
 
 ```bash
-# 構建映像
-docker-compose build
-
-# 啟動服務
-docker-compose up -d
-
-# 查看日誌
-docker-compose logs -f api
+# 使用不同端口
+streamlit run streamlit_app.py --server.port 8502
 ```
 
-</details>
+**3. 數據無法保存**
 
-<details>
-<summary>☁️ 雲端部署</summary>
+```bash
+# 檢查目錄權限
+ls -la data/
+# 重新創建數據目錄
+rm -rf data/ && mkdir data
+```
 
-支援一鍵部署到主流雲端平台：
+**4. 瀏覽器無法打開**
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/import/project)
-[![Deploy to Railway](https://railway.app/button.svg)](https://railway.app/template)
+- 手動訪問 http://localhost:8501
+- 檢查防火牆設定
+- 嘗試不同的瀏覽器
 
-</details>
+### 重置應用
 
----
+```bash
+# 完全重置數據
+rm -rf data/
+# 重新啟動應用
+python start_app.py
+```
 
-## 🎉 功能演示
+### 日誌查看
 
-### 📱 響應式界面
-
-<div align="center">
-<table>
-<tr>
-<td align="center" width="33%">
-<img src="https://via.placeholder.com/300x400/4F46E5/FFFFFF?text=Desktop+View" alt="桌面版">
-<br><strong>🖥️ 桌面版</strong>
-</td>
-<td align="center" width="33%">
-<img src="https://via.placeholder.com/200x400/10B981/FFFFFF?text=Tablet+View" alt="平板版">
-<br><strong>📱 平板版</strong>
-</td>
-<td align="center" width="33%">
-<img src="https://via.placeholder.com/150x400/F59E0B/FFFFFF?text=Mobile+View" alt="手機版">
-<br><strong>📱 手機版</strong>
-</td>
-</tr>
-</table>
-</div>
-
-### 🌙 深色模式
-
-<div align="center">
-
-| 淺色主題                                                                          | 深色主題                                                                        |
-| --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| ![Light Mode](https://via.placeholder.com/400x250/F8FAFC/1F2937?text=Light+Theme) | ![Dark Mode](https://via.placeholder.com/400x250/1F2937/F8FAFC?text=Dark+Theme) |
-
-</div>
-
----
-
-## 🗺️ 發展路線圖
-
-### 🎯 2024 Q1 - 核心功能完善
-
-- [x] 基礎貼文管理
-- [x] 用戶認證系統
-- [x] 響應式設計
-- [ ] AI 內容生成
-- [ ] Facebook API 整合
-
-### 🚀 2024 Q2 - 智能化升級
-
-- [ ] 智能排程建議
-- [ ] 內容效果預測
-- [ ] 自動化標籤
-- [ ] 競品分析工具
-
-### 📊 2024 Q3 - 數據驅動
-
-- [ ] 高級分析儀表板
-- [ ] 用戶行為追蹤
-- [ ] A/B 測試功能
-- [ ] 自動化報告
-
-### 🌐 2024 Q4 - 企業級功能
-
-- [ ] 多平台支援
-- [ ] 團隊協作工具
-- [ ] 企業級安全
-- [ ] 白標解決方案
-
----
-
-## 🤝 貢獻指南
-
-我們歡迎所有形式的貢獻！請參閱我們的 [貢獻指南](CONTRIBUTING.md) 了解如何參與。
-
-### 🏆 貢獻者
-
-感謝所有為專案做出貢獻的開發者！
-
-<div align="center">
-
-[![Contributors](https://contrib.rocks/image?repo=your-username/ai-facebook-post-system)](https://github.com/your-username/ai-facebook-post-system/graphs/contributors)
-
-</div>
-
-### 🎁 贊助
-
-如果這個專案對您有幫助，請考慮贊助我們的開發工作：
-
-<div align="center">
-
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/yourname)
-[![GitHub Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-EA4AAA?style=for-the-badge&logo=github-sponsors&logoColor=white)](https://github.com/sponsors/yourname)
-
-</div>
-
----
-
-## 📞 支援與社群
-
-### 💬 討論社群
-
-- 💬 [Discord 社群](https://discord.gg/your-invite) - 即時討論和支援
-- 📧 [郵件列表](mailto:support@example.com) - 重要更新通知
-- 🐦 [Twitter](https://twitter.com/yourhandle) - 最新消息和技巧
-
-### 🆘 取得幫助
-
-遇到問題？我們提供多種支援管道：
-
-1. 📖 查看 [常見問題](docs/FAQ.md)
-2. 🔍 搜尋 [已知問題](https://github.com/your-username/ai-facebook-post-system/issues)
-3. 💬 加入 Discord 社群討論
-4. 📝 [建立新的 Issue](https://github.com/your-username/ai-facebook-post-system/issues/new)
-
-### 📈 專案統計
-
-<div align="center">
-
-![GitHub stars](https://img.shields.io/github/stars/your-username/ai-facebook-post-system?style=social)
-![GitHub forks](https://img.shields.io/github/forks/your-username/ai-facebook-post-system?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/your-username/ai-facebook-post-system?style=social)
-
-![GitHub last commit](https://img.shields.io/github/last-commit/your-username/ai-facebook-post-system)
-![GitHub issues](https://img.shields.io/github/issues/your-username/ai-facebook-post-system)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/your-username/ai-facebook-post-system)
-
-</div>
-
----
+Streamlit 會在終端顯示詳細的運行日誌，如遇問題請查看相關錯誤信息。
 
 ## 📄 授權條款
 
-本專案採用 MIT 授權條款 - 詳見 [LICENSE](LICENSE) 文件。
+本專案採用 MIT 授權條款，詳情請查看 [LICENSE](LICENSE) 文件。
 
-```
-MIT License
+## 🤝 貢獻指南
 
-Copyright (c) 2024 AI Facebook Post System
+歡迎提交 Issues 和 Pull Requests！
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software...
-```
+### 開發環境設置
 
----
+1. Fork 本專案
+2. 創建功能分支：`git checkout -b feature/amazing-feature`
+3. 提交更改：`git commit -m 'Add amazing feature'`
+4. 推送分支：`git push origin feature/amazing-feature`
+5. 提交 Pull Request
 
-## 🎖️ 功能展示與成就
+### 代碼規範
 
-### ✅ 已完成核心功能
+- 遵循 PEP 8 Python 代碼規範
+- 添加適當的註釋和文檔字串
+- 確保所有功能都有適當的錯誤處理
 
-<div align="center">
+## 📞 聯絡資訊
 
-| 功能模組      | 完成度 | 描述           | 技術實現            |
-| ------------- | ------ | -------------- | ------------------- |
-| 🔐 用戶認證   | 100%   | JWT 登入系統   | FastAPI + Pydantic  |
-| 📝 貼文管理   | 100%   | 完整 CRUD 操作 | RESTful API         |
-| 🔍 搜尋篩選   | 100%   | 智能搜尋與分類 | 即時搜尋 + 狀態篩選 |
-| 📊 數據統計   | 100%   | 即時統計展示   | 動態數據更新        |
-| 📱 響應式設計 | 100%   | 多設備適配     | Tailwind CSS        |
-| 🌙 深色模式   | 100%   | 主題切換       | CSS Variables       |
+- **專案維護者**: AI Assistant
+- **電子郵件**: [聯絡郵箱]
+- **專案網址**: [GitHub/GitLab 連結]
 
-</div>
+## 🙏 致謝
 
-### 🏆 系統特色亮點
+感謝以下開源專案的支持：
 
-<table>
-<tr>
-<td width="25%" align="center">
-<h4>🚀 高效能</h4>
-<p>響應時間 < 100ms<br/>支援高並發訪問</p>
-</td>
-<td width="25%" align="center">
-<h4>🛡️ 安全性</h4>
-<p>JWT 認證<br/>數據加密存儲</p>
-</td>
-<td width="25%" align="center">
-<h4>📱 易用性</h4>
-<p>直觀界面設計<br/>5分鐘快速上手</p>
-</td>
-<td width="25%" align="center">
-<h4>🔧 擴展性</h4>
-<p>模組化架構<br/>易於二次開發</p>
-</td>
-</tr>
-</table>
+- [Streamlit](https://streamlit.io/) - 優秀的數據應用框架
+- [Plotly](https://plotly.com/) - 強大的數據可視化庫
+- [Pandas](https://pandas.pydata.org/) - 數據處理的瑞士軍刀
+- [Pydantic](https://pydantic-docs.helpmanual.io/) - 數據驗證和設定管理
 
 ---
 
-## 🎯 立即開始
+**版本**: 1.0.0
+**最後更新**: 2024-01-20
+**授權**: MIT License
 
-<div align="center">
-
-### 三步驟快速體驗
-
-```bash
-# 1️⃣ 克隆並安裝
-git clone https://github.com/your-username/ai-facebook-post-system.git
-cd ai-facebook-post-system && pip install -r requirements.txt
-
-# 2️⃣ 啟動服務
-uvicorn app.main:app --reload --port 8000
-
-# 3️⃣ 開始使用
-# 瀏覽器訪問: http://localhost:8000
-# 測試帳號: admin@example.com / admin123
-```
-
-[![立即開始](https://img.shields.io/badge/立即開始-4F46E5?style=for-the-badge&logo=rocket&logoColor=white)](http://localhost:8000)
-[![查看文檔](https://img.shields.io/badge/查看文檔-10B981?style=for-the-badge&logo=book&logoColor=white)](http://localhost:8000/docs)
-[![下載代碼](https://img.shields.io/badge/下載代碼-F59E0B?style=for-the-badge&logo=download&logoColor=white)](https://github.com/your-username/ai-facebook-post-system/archive/main.zip)
-
-</div>
-
----
-
-## 💡 常見問題 FAQ
-
-<details>
-<summary><strong>Q: 系統支援哪些瀏覽器？</strong></summary>
-
-**A:** 支援所有現代瀏覽器：
-
-- ✅ Chrome 90+
-- ✅ Firefox 88+
-- ✅ Safari 14+
-- ✅ Edge 90+
-- ✅ 行動瀏覽器 (iOS Safari, Chrome Mobile)
-
-</details>
-
-<details>
-<summary><strong>Q: 可以同時管理多個 Facebook 帳號嗎？</strong></summary>
-
-**A:** 目前版本支援單一帳號管理，多帳號功能已列入開發計劃中，預計 2024 Q4 推出。
-
-</details>
-
-<details>
-<summary><strong>Q: 資料會保存多久？</strong></summary>
-
-**A:**
-
-- 開發環境：重啟後清除（記憶體存儲）
-- 生產環境：永久保存（可擴展至資料庫）
-- 支援資料導出和備份功能
-
-</details>
-
-<details>
-<summary><strong>Q: 如何整合真實的 Facebook API？</strong></summary>
-
-**A:** 請參考我們的 [Facebook API 整合指南](docs/facebook-integration.md)，包含完整的設定步驟和代碼示例。
-
-</details>
-
-<details>
-<summary><strong>Q: 系統有使用限制嗎？</strong></summary>
-
-**A:**
-
-- 開發版：無限制使用
-- 貼文數量：無上限
-- API 調用：可配置速率限制
-- 儲存空間：依據部署環境而定
-
-</details>
-
----
-
-## 🎉 更新日誌
-
-### v1.0.0 (2024-01-15)
-
-- 🎉 首次正式發布
-- ✅ 完成核心貼文管理功能
-- ✅ 實現用戶認證系統
-- ✅ 添加響應式設計支援
-- ✅ 整合深色模式切換
-
-### v0.9.0 (2024-01-10)
-
-- 🔧 重構前端組件架構
-- 📊 完善統計數據功能
-- 🐛 修復已知問題
-
-### v0.8.0 (2024-01-05)
-
-- 🎨 優化用戶界面設計
-- 🔍 實現智能搜尋功能
-- 📱 添加行動版適配
-
----
-
-<div align="center">
-
-**🎉 感謝使用 AI 自動化 Facebook 發文系統！**
-
-**現在就體驗強大的社交媒體管理平台** 🚀
-
-Made with ❤️ by the development team | © 2024 AI Facebook Post System
-
-[⬆️ 回到頂部](#-ai-自動化-facebook-發文系統) • [⭐ 給我們星標](https://github.com/your-username/ai-facebook-post-system) • [🐛 回報問題](https://github.com/your-username/ai-facebook-post-system/issues)
-
-</div>
+🚀 **立即開始使用，體驗智能化的 Facebook 發文管理！**

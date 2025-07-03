@@ -1,0 +1,40 @@
+[
+  {
+    "id": 1,
+    "title": "AI 生成的精彩內容",
+    "content": "這是一篇由 AI 自動生成的 Facebook 貼文內容，包含豐富的行銷元素和吸引人的文案。🚀 #AI #SocialMedia",
+    "status": "published",
+    "scheduled_time": null,
+    "created_time": "2025-07-03T15:25:51.290935",
+    "updated_time": "2025-07-03T15:25:51.294858",
+    "facebook_post_id": "fb_1_1751527551",
+    "engagement_stats": {
+      "likes": 392,
+      "comments": 53,
+      "shares": 31,
+      "views": 1743
+    }
+  },
+  {
+    "id": 2,
+    "title": "自動化發文測試",
+    "content": "測試自動化發文系統的功能，包含排程發布和即時監控。📅 #Automation #Testing",
+    "status": "scheduled",
+    "scheduled_time": null,
+    "created_time": "2025-07-03T15:25:51.291855",
+    "updated_time": "2025-07-03T15:25:51.291855",
+    "facebook_post_id": null,
+    "engagement_stats": {}
+  },
+  {
+    "id": 3,
+    "title": "Facebook 行銷策略",
+    "content": "分享最新的 Facebook 行銷策略和技巧，幫助提升粉絲互動率。📊 #Marketing #Strategy",
+    "status": "draft",
+    "scheduled_time": null,
+    "created_time": "2025-07-03T15:25:51.292824",
+    "updated_time": "2025-07-03T15:25:51.292824",
+    "facebook_post_id": null,
+    "engagement_stats": {}
+  }
+]
