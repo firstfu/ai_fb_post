@@ -53,7 +53,6 @@ from langchain_openai import ChatOpenAI
 from langchain_anthropic import ChatAnthropic
 from langchain.schema import BaseMessage, AIMessage, HumanMessage, SystemMessage
 from langgraph.graph import StateGraph, END
-from langgraph.prebuilt import ToolExecutor
 from typing import TypedDict
 
 # 配置文件路徑
