@@ -1,0 +1,40 @@
+---
+description:
+globs: *
+alwaysApply: false
+---
+# 後端架構指南
+
+## API 端點結構
+
+後端系統基於 FastAPI 框架構建，提供以下主要 API 端點類別：
+
+- **/auth/**: 用戶認證相關 API，包含登入、註冊和登出功能
+- **/posts/**: 貼文管理相關 API，包含 CRUD 操作和發布功能
+- **/dashboard/**: 儀表板和統計數據相關 API
+- **/users/**: 用戶資料相關 API
+
+## 主要檔案
+
+- [app/main.py](mdc:app/main.py) - 包含所有 API 端點定義和主要業務邏輯
+
+## 資料模型
+
+主要的資料模型包括：
+
+1. **User** - 用戶資訊模型
+2. **Post** - 貼文資料模型
+3. **PostCreateRequest/PostUpdateRequest** - 貼文創建/更新請求模型
+4. **LoginRequest/RegisterRequest** - 登入/註冊請求模型
+
+## API 流程示例
+
+登入流程：
+1. 客戶端發送 POST 請求到 `/auth/login`
+2. 後端驗證用戶憑證
+3. 返回 JWT Token 或錯誤訊息
+
+貼文創建流程：
+1. 客戶端發送 POST 請求到 `/posts`
+2. 後端創建貼文記錄
+3. 返回新創建的貼文 ID 或錯誤訊息
